@@ -22,8 +22,22 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    // Cordova is now initialized. Have fun!
+    // // Cordova is now initialized. Have fun!
 
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
+    // console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
+    // document.getElementById('deviceready').classList.add('ready');
+    var button = document.getElementById('btnTest');
+    button.addEventListener('click', funButtonClick);
+}
+
+function funButtonClick() {
+    testPlugin();
+}
+
+function testPlugin() {
+    cordova.plugins.MyPlugin.coolMethod('this is leon test', function (res) {
+        alert('成功:' + JSON.stringify(res));
+    }, function (err) {
+        alert('失败:' + JSON.stringify(res));
+    });
 }
