@@ -19,25 +19,33 @@
 
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
+
+
+
 document.addEventListener('deviceready', onDeviceReady, false);
+// window.addEventListener('load', onDeviceReady, false);// 仅html测试
 
 function onDeviceReady() {
-    // // Cordova is now initialized. Have fun!
+    var btnTestToast = document.getElementById('btnTestToast');
+    btnTestToast.addEventListener('click', funTestToast);
 
-    // console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    // document.getElementById('deviceready').classList.add('ready');
-    var button = document.getElementById('btnTest');
-    button.addEventListener('click', funButtonClick);
+    var btnTestDial = document.getElementById('btnTestDial');
+    btnTestDial.addEventListener('click', funTestDial);
 }
 
-function funButtonClick() {
-    testPlugin();
+function funTestToast() {
+    cordova.plugins.ToastPlugin.show("天天开心");
 }
 
-function testPlugin() {
-    cordova.plugins.MyPlugin.coolMethod('this is leon test', function (res) {
-        // alert('成功:' + JSON.stringify(res));
+function funTestDial() {
+    var phoneNumber = document.getElementById('phoneNumberIpt').value;
+    if (!phoneNumber) {
+        alert('号码不能为空');
+        return;
+    }
+    cordova.plugins.DialerPlugin.dial(phoneNumber, function () {
+        //
     }, function (err) {
-        alert('失败:' + JSON.stringify(res));
+        alert(JSON.stringify(err));
     });
 }

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="xcloud.cxist.dialer" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>DialerPlugin</name>
+    <js-module name="DialerPlugin" src="www/DialerPlugin.js">
+        <clobbers target="cordova.plugins.DialerPlugin" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="DialerPlugin">
+                <param name="android-package" value="xcloud.cxist.dialer.DialerPlugin" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.CALL_PHONE" />
+        </config-file>
+        <source-file src="src/android/DialerPlugin.java" target-dir="src/xcloud/cxist/dialer/DialerPlugin" />
+    </platform>
+</plugin>

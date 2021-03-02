@@ -6,7 +6,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "test:plugin": "cordova plugin add ./MyPlugin && cordova platform rm android && cordova platform add android && cordova run android"
+        "test:plugin": "cordova plugin add ./ToastPlugin && cordova plugin add ./DialerPlugin && cordova platform rm android && cordova platform add android && cordova run android"
     },
     "keywords": [
         "ecosystem:cordova"
@@ -16,12 +16,14 @@
     "devDependencies": {
         "cordova-android": "^9.0.0",
         "cordova-plugin-whitelist": "^1.3.4",
-        "MyPlugin": "file:MyPlugin"
+        "DialerPlugin": "file:DialerPlugin",
+        "ToastPlugin": "file:ToastPlugin"
     },
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {},
-            "cxist.cloud.cps": {}
+            "cxist.xcloud.toast": {},
+            "xcloud.cxist.dialer": {}
         },
         "platforms": [
             "android"
