@@ -36,7 +36,7 @@ function funButtonClick() {
 
 function testPlugin() {
     cordova.plugins.MyPlugin.coolMethod('this is leon test', function (res) {
-        alert('成功:' + JSON.stringify(res));
+        // alert('成功:' + JSON.stringify(res));
     }, function (err) {
         alert('失败:' + JSON.stringify(res));
     });
