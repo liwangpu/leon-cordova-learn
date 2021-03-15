@@ -31,6 +31,9 @@ function onDeviceReady() {
 
     var btnTestDial = document.getElementById('btnTestDial');
     btnTestDial.addEventListener('click', funTestDial);
+
+    var btnTestKTPlugin = document.getElementById('btnTestKTPlugin');
+    btnTestKTPlugin.addEventListener('click', funTestKTPlugin);
 }
 
 function funTestToast() {
@@ -45,6 +48,15 @@ function funTestDial() {
     }
     cordova.plugins.DialerPlugin.dial(phoneNumber, function () {
         //
+    }, function (err) {
+        alert(JSON.stringify(err));
+    });
+}
+
+function funTestKTPlugin() {
+    // alert(JSON.stringify(cordova.plugins.KTPlugin));
+    cordova.plugins.KTPlugin.coolMethod('just for test', function (mes) {
+        alert('调用结果' + mes);
     }, function (err) {
         alert(JSON.stringify(err));
     });
